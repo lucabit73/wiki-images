@@ -1,0 +1,73 @@
+--Disambiguation--
+https://it.wikipedia.org/w/api.php?action=query&format=json&prop=pageprops&titles=mercurio&formatversion=2
+{
+  "batchcomplete": true,
+  "query": {
+    "normalized": [
+      {
+        "fromencoded": false,
+        "from": "mercurio",
+        "to": "Mercurio"
+      }
+    ],
+    "pages": [
+      {
+        "pageid": 2786,
+        "ns": 0,
+        "title": "Mercurio",
+        "pageprops": {
+          "disambiguation": "",
+          "wikibase_item": "Q200655"
+        }
+      }
+    ]
+  }
+}
+
+--no img--
+https://it.wikipedia.org/w/api.php?action=query&format=json&prop=pageprops&titles=cane&formatversion=2
+{
+  "batchcomplete": true,
+  "query": {
+    "normalized": [
+      {
+        "fromencoded": false,
+        "from": "cane",
+        "to": "Cane"
+      }
+    ],
+    "pages": [
+      {
+        "pageid": 457950,
+        "ns": 0,
+        "title": "Cane"
+      }
+    ]
+  }
+}
+
+--ok--
+https://it.wikipedia.org/w/api.php?action=query&format=json&prop=pageprops&titles=casa&formatversion=2
+{
+  "batchcomplete": true,
+  "query": {
+    "normalized": [
+      {
+        "fromencoded": false,
+        "from": "casa",
+        "to": "Casa"
+      }
+    ],
+    "pages": [
+      {
+        "pageid": 1856389,
+        "ns": 0,
+        "title": "Casa",
+        "pageprops": {
+          "page_image_free": "Viale_Spartaco_Lavagnini_(Firenze)_17.JPG",
+          "wikibase_item": "Q3947"
+        }
+      }
+    ]
+  }
+}
