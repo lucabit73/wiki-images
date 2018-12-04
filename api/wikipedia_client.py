@@ -1,7 +1,11 @@
 from django.conf import settings
 import requests
-from requests import ConnectionError, HTTPError, Timeout
+from requests.exceptions import RequestException
 import logging
+
+
+class DecodingException(Exception):
+    pass
 
 
 class WikipediaClient(object):
@@ -15,23 +19,19 @@ class WikipediaClient(object):
 
     def wiki_request(self, params, lang):
         url = self.url.format(lang=lang)
+
         try:
             response = requests.get(url, params)
             response.raise_for_status()
-        except ConnectionError as e:
-            logging.error("ConnectionError: {}".format(e))
+        except RequestException as e:
+            logging.error("RequestException: {}".format(e))
             raise
-        except HTTPError as e:
-            logging.error("HTTPError: {}".format(e))
-            raise
-        except Timeout as e:
-            logging.error("Timeout: {}".format(e))
-            raise
+
         try:
             result = response.json()
         except Exception as e:
             logging.error("Exception while decoding response json: {}".format(e))
-            raise
+            raise DecodingException("{}".format(e))
         return result
 
     def get_something(self):
