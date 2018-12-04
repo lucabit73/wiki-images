@@ -18,3 +18,7 @@ setup: migrate
 .PHONY: migrate
 migrate:
 	docker-compose --project-name=$(PROJECT) run django python manage.py migrate
+
+.PHONY: build
+build:
+	docker-compose --project-name=$(PROJECT) build
