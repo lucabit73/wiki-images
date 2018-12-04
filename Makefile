@@ -1,9 +1,8 @@
-# REDIRECT-CAMPAIGN-OPTIMIZER
 PROJECT=wiki-images
 
 .PHONY: info
 info:
-	@echo
+	@echo "yo"
 
 .PHONY: up
 up:
