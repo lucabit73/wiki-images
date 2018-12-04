@@ -1,2 +1,6 @@
 Django==2.1.4
 pytz==2018.7
+requests==2.20.1
+ipython==7.2.0
+ipdb==0.11
+
