@@ -118,3 +118,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+WIKIPEDIA_API = "https://{lang}.wikipedia.org/w/api.php"
+WIKIMEDIA_API = "https://commons.wikimedia.org/w/api.php"
