@@ -9,9 +9,10 @@ class DecodingException(Exception):
 
 
 class Page(object):
-    def __init__(self, id, title):
+    def __init__(self, id, title, url):
         self.id = id
         self.title = title
+        self.url = url
         # self.disambiguation Bool
         # self.page_image_free Str
 
@@ -20,7 +21,7 @@ class Page(object):
 
     @classmethod
     def from_page_response_item(cls, obj):
-        return cls(obj['pageid'], obj['title'])
+        return cls(obj['pageid'], obj['title'], obj['canonicalurl'])
 
 
 class WikipediaClient(object):
@@ -51,14 +52,15 @@ class WikipediaClient(object):
 
     def get_page_from_title(self, lang, title):
         params = self.query_params.copy()
-        params.update({'prop': 'pageprops', 'titles': title})
+        params.update({'prop': 'pageprops', 'titles': title, 'inprop': 'url'})
         response = self.wiki_request(params, lang)
         return response
 
     def get_page(self, lang, id):
         # https://www.mediawiki.org/wiki/API:Query
+        # https://www.mediawiki.org/wiki/API:Properties
         params = self.query_params.copy()
-        params.update({'prop': 'pageprops', 'pageids': id})
+        params.update({'prop': 'pageprops|info', 'pageids': id, 'inprop': 'url'})
         response = self.wiki_request(params, lang)
 
         # Try to build a Page object
